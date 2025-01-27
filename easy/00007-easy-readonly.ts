@@ -31,22 +31,22 @@
 
 /* _____________ Your Code Here _____________ */
 
-type MyReadonly<T> = any
+type MyReadonly<T> = {
+  readonly [Property in keyof T]: T[Property];
+};
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
-type cases = [
-  Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>,
-]
+type cases = [Expect<Equal<MyReadonly<Todo1>, Readonly<Todo1>>>];
 
 interface Todo1 {
-  title: string
-  description: string
-  completed: boolean
+  title: string;
+  description: string;
+  completed: boolean;
   meta: {
-    author: string
-  }
+    author: string;
+  };
 }
 
 /* _____________ Further Steps _____________ */
